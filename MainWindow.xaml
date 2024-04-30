@@ -1,0 +1,113 @@
+﻿<Window x:Class="TP91.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:local="clr-namespace:TP91"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <!-- Вкладка для диаграммы -->
+            <TabItem Header="Диаграмма">
+                <Grid>
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Данные для диаграммы (через пробел):" Margin="0 0 0 10"/>
+                        <TextBox x:Name="HistogramDataTextBox" Width="200"/>
+                        <Button Content="Построить диаграмму" Click="BuildHistogram_Click" Width="150" HorizontalAlignment="Left"/>
+
+                        <!-- Форматирование диаграммы -->
+                        <TextBlock Text="Форматирование диаграммы" FontWeight="Bold" Margin="0 10 0 10"/>
+
+                        <!-- ComboBox с выбором цвета заливки столбцов -->
+                        <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
+                            <TextBlock Text="Цвет заливки столбцов:" Margin="0 0 10 0"/>
+                            <ComboBox x:Name="ColumnFillColorComboBox" Width="150">
+                                <ComboBoxItem Content="Белый"/>
+                                <ComboBoxItem Content="Чёрный"/>
+                                <ComboBoxItem Content="Красный"/>
+                                <ComboBoxItem Content="Голубой"/>
+                                <ComboBoxItem Content="Фиолетовый"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!-- ComboBox с выбором цвета обводки столбцов -->
+                        <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
+                            <TextBlock Text="Цвет обводки столбцов:" Margin="0 0 10 0"/>
+                            <ComboBox x:Name="ColumnBorderColorComboBox" Width="150">
+                                <ComboBoxItem Content="Белый"/>
+                                <ComboBoxItem Content="Чёрный"/>
+                                <ComboBoxItem Content="Красный"/>
+                                <ComboBoxItem Content="Голубой"/>
+                                <ComboBoxItem Content="Фиолетовый"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!-- Кнопка применения форматирования диаграммы -->
+                        <Button Content="Применить форматирование диаграммы" Click="ApplyHistogramFormatting_Click" Width="250" HorizontalAlignment="Left"/>
+
+                        <!-- Диаграмма (столбчатая) -->
+                        <lvc:CartesianChart Name="ColumnChart" Margin="10" Height="198"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка для графика -->
+            <TabItem Header="График">
+                <Grid>
+                    <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                            <TextBlock Text="Точка 1 (x, y):" Margin="0 0 10 0"/>
+                            <TextBox x:Name="Point1X" Width="50" Margin="0 0 10 0"/>
+                            <TextBox x:Name="Point1Y" Width="50"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                            <TextBlock Text="Точка 2 (x, y):" Margin="0 0 10 0"/>
+                            <TextBox x:Name="Point2X" Width="50" Margin="0 0 10 0"/>
+                            <TextBox x:Name="Point2Y" Width="50"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                            <TextBlock Text="Точка 3 (x, y):" Margin="0 0 10 0"/>
+                            <TextBox x:Name="Point3X" Width="50" Margin="0 0 10 0"/>
+                            <TextBox x:Name="Point3Y" Width="50"/>
+                        </StackPanel>
+                        <Button Content="Построить график" Click="BuildChart_Click" Width="120" HorizontalAlignment="Left"/>
+
+                        <!-- Форматирование графика -->
+                        <TextBlock Text="Форматирование графика" FontWeight="Bold" Margin="0 10 0 10"/>
+
+                        <!-- ComboBox с выбором цвета линий графика -->
+                        <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
+                            <TextBlock Text="Цвет линий графика:" Margin="0 0 10 0"/>
+                            <ComboBox x:Name="LineStrokeColorComboBox" Width="150">
+                                <ComboBoxItem Content="Белый"/>
+                                <ComboBoxItem Content="Чёрный"/>
+                                <ComboBoxItem Content="Красный"/>
+                                <ComboBoxItem Content="Голубой"/>
+                                <ComboBoxItem Content="Фиолетовый"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!-- ComboBox с выбором цвета заливки графика -->
+                        <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
+                            <TextBlock Text="Цвет заливки графика:" Margin="0 0 10 0"/>
+                            <ComboBox x:Name="LineFillColorComboBox" Width="150">
+                                <ComboBoxItem Content="Белый"/>
+                                <ComboBoxItem Content="Чёрный"/>
+                                <ComboBoxItem Content="Красный"/>
+                                <ComboBoxItem Content="Голубой"/>
+                                <ComboBoxItem Content="Фиолетовый"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!-- Кнопка применения форматирования графика -->
+                        <Button Content="Применить форматирование графика" Click="ApplyChartFormatting_Click" Width="250" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <!-- График -->
+                    <lvc:CartesianChart Name="LineChart" Margin="318,72,42,60" Height="NaN" Width="NaN"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
